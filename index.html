@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Şaka Anketi</title>
+  <style>
+    body {
+      background-color: #00ff00; /* yeşil arka plan */
+      color: black;
+      font-family: monospace;
+      text-align: center;
+      padding: 50px;
+    }
+    .question {
+      margin: 20px 0;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #222;
+      color: #0f0;
+    }
+    input[type="text"] {
+      padding: 8px;
+      width: 300px;
+      margin: 10px 0;
+    }
+    #hackingArea {
+      margin-top: 30px;
+      height: 300px;
+      overflow-y: auto;
+      background-color: #000;
+      color: #0f0;
+      padding: 10px;
+      font-size: 14px;
+      text-align: left;
+      border: 2px solid #0f0;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Şaka Anketi</h1>
+
+  <!-- Soru 1 -->
+  <div class="question">
+    <p>1. Kahramanmaraş'ta lise öğrencisi olmak nasıl?</p>
+    <button onclick="answer1('Mükemmel')">Mükemmel</button>
+    <button onclick="answer1('İyi')">İyi</button>
+    <button onclick="answer1('Kötü')">Kötü</button>
+  </div>
+
+  <!-- Soru 2 -->
+  <div class="question">
+    <p>2. Ortaokul mu lise mi daha güzel? Açıklayınız:</p>
+    <input type="text" id="answer2" placeholder="Buraya yazın...">
+  </div>
+
+  <button onclick="startHacking()">Kaydet</button>
+
+  <!-- Hacking ekranı -->
+  <div id="hackingArea"></div>
+
+  <script>
+    function answer1(answer) {
+      alert("Cevabınız kaydedildi: " + answer);
+    }
+
+    function startHacking() {
+      const userText = document.getElementById('answer2').value;
+      if(userText === '') {
+        alert("Lütfen ikinci soruyu da doldurun!");
+        return;
+      }
+
+      document.getElementById('hackingArea').style.display = 'block';
+      const hackingArea = document.getElementById('hackingArea');
+      hackingArea.innerHTML = "Hacking başladı...\n";
+
+      let counter = 0;
+      const interval = setInterval(() => {
+        const randomCode = Math.floor(Math.random() * 1000000);
+        const randomLine = `Accessing memory: ${randomCode} ...\n`;
+        hackingArea.innerHTML += randomLine;
+        hackingArea.scrollTop = hackingArea.scrollHeight;
+        counter++;
+        if(counter > 50) { // 50 satır sonra dur
+          clearInterval(interval);
+          hackingArea.innerHTML += "\nHacking tamamlandı! 🎉";
+        }
+      }, 100);
+    }
+  </script>
+
+</body>
+</html>
