@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Şaka Anketi</title>
+  <title>First app for students</title>
   <style>
     body {
-      background-color: #00ff00; /* yeşil arka plan */
-      color: black;
-      font-family: monospace;
-      text-align: center;
-      padding: 50px;
-    }
+  background-color: #006400; /* koyu yeşil */
+  color: #0f0;               /* yazılar hacker tarzı yeşil */
+  font-family: monospace;
+  text-align: center;
+  padding: 50px;
+}
     .question {
       margin: 20px 0;
     }
@@ -50,7 +50,7 @@
 
   <!-- Soru 1 -->
   <div class="question">
-    <p>1. Kahramanmaraş'ta lise öğrencisi olmak nasıl?</p>
+    <p>1. Lise öğrencisi olmak nasıl?</p>
     <button onclick="answer1('Mükemmel')">Mükemmel</button>
     <button onclick="answer1('İyi')">İyi</button>
     <button onclick="answer1('Kötü')">Kötü</button>
@@ -92,7 +92,7 @@
         counter++;
         if(counter > 50) { // 50 satır sonra dur
           clearInterval(interval);
-          hackingArea.innerHTML += "\nHacking tamamlandı! 🎉";
+          hackingArea.innerHTML += "\nHacking tamamlandı! Cihaz sistem dışı bırakılıyor";
         }
       }, 100);
     }
